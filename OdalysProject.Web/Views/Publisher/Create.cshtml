@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Oluştur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Publisher
+
+@using OdalysProject.Web.Models
+
+<div class="container-fluid">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Yayınevleri","Index","Publisher")
+        </li>
+        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+    </ol>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Name"></label>
+                <input  asp-for="Name" class="form-control"placeholder="Publisher Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="About"></label>
+            <textarea asp-for="About" type="text" class="form-control" ></textarea>
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input asp-for="Image" type="file" class="form-control-file" >
+            </div>
+        </div>
+        <input type="submit" value="Oluştur" class="btn btn-outline-primary"/>
+
+        @Html.ActionLink("İptal", "Index", "Publisher", null, new {@class="btn btn-outline-danger"})
+
+    </form>
+</div>

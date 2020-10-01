@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "Kitaplar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Book>
+
+@using OdalysProject.Web.Models
+
+<br />
+<div class="container-fluid">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Kategori","Index","Category")
+        </li>
+        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            @ViewData["Title"]
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.BookId)</th>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.ISBN)</th>
+                            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                            <th>@Html.DisplayNameFor(model => model.Author.Firstname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Author.Lastname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Publisher.Name)</th>
+
+
+
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.BookId)</th>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.ISBN)</th>
+                            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                            <th>@Html.DisplayNameFor(model => model.Author.Firstname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Author.Lastname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Publisher.Name)</th>
+
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.BookId</td>
+                                <td>@item.Name</td>
+                                <td>@item.ISBN</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Author.Firstname</td>
+                                <td>@item.Author.Lastname</td>
+                                <td>@item.Publisher.Name</td>
+
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>

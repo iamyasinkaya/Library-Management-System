@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\iamys\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\iamys\\.nuget\\packages"
+    ]
+  }
+}

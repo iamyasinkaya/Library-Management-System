@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "Kitap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Book>
+
+@using OdalysProject.Web.Models
+
+<br />
+<div class="container-fluid">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Anasayfa", "Index", "Home")
+        </li>
+        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            <form asp-action="DownloadExcelDocument">
+                <input class="btn btn-outline-success" type="submit" value="Excel'e Aktar" />
+            </form>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            @ViewData["Title"]
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.ISBN)</th>
+                            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                            <th>@Html.DisplayNameFor(model => model.Category.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Author.FullName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Publisher.Name)</th>
+                            <th>Aksiyonlar</th>
+
+
+
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.ISBN)</th>
+                            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                            <th>@Html.DisplayNameFor(model => model.Category.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Author.FullName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Publisher.Name)</th>
+                            <th>Aksiyonlar</th>
+
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.ISBN</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Category.Name</td>
+                                <td>@item.Author.FullName</td>
+                                <td>@item.Publisher.Name</td>
+                                <td>
+
+
+                                    @Html.ActionLink("Sil", "Delete", "Book", new { Id = item.BookId })
+                                    @Html.ActionLink("Güncelle", "Update", "Book", new { Id = item.BookId })
+
+
+                                </td>
+
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+

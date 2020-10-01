@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Yazar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Author>
+@using OdalysProject.Web.Models
+
+<br />
+<div class="container-fluid">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+
+            @Html.ActionLink("Anasayfa", "Index", "Home")
+        </li>
+        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            <form asp-action="DownloadExcelDocument">
+                <input class="btn btn-outline-success" type="submit" value="Excel'e Aktar" />
+            </form>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            @ViewData["Title"]
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.AuthorId)</th>
+                            <th>@Html.DisplayNameFor(model => model.Firstname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Lastname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Nickname)</th>
+                            <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+                            <th>@Html.DisplayNameFor(model => model.DateOfDeath)</th>
+                            <th>@Html.DisplayNameFor(model => model.Book.Name)</th>
+                            <th>Aksiyonlar</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.AuthorId)</th>
+                            <th>@Html.DisplayNameFor(model => model.Firstname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Lastname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Nickname)</th>
+                            <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+                            <th>@Html.DisplayNameFor(model => model.DateOfDeath)</th>
+                            <th>@Html.DisplayNameFor(model => model.Book.Name)</th>
+                            <th>Aksiyonlar</th>
+
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.AuthorId</td>
+                                <td>@item.Firstname</td>
+                                <td>@item.Lastname</td>
+                                <td>@item.Nickname</td>
+                                <td>@item.DateOfBirth</td>
+                                <td>@item.DateOfDeath</td>
+                                <td>@item.Book.Name</td>
+                                <td>
+
+                                    @Html.ActionLink("Sil", "Delete", "Author", new { Id = item.AuthorId }, new { @class = "btn btn-outline-danger" })
+                                    @Html.ActionLink("Güncelle", "Update", "Author", new { Id = item.AuthorId }, new { @class = "btn btn-outline-warning" })
+
+
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

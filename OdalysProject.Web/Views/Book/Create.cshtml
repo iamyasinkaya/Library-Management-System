@@ -1,0 +1,111 @@
+﻿@model OdalysProject.Web.Models.Book
+@using OdalysProject.Web.Enums
+@using OdalysProject.Web.Models
+
+
+
+@{
+    ViewData["Title"] = "Oluştur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Kitaplar","Index","Book")
+        </li>
+        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+    </ol>
+    <div class="">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ISBN" class="control-label"></label>
+                    <input asp-for="ISBN" class="form-control" />
+                    <span asp-validation-for="ISBN" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Quantity"></label>
+                    <input asp-for="Quantity" type="number" class="form-control">
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="BookStatus" class="control-label"></label>
+                    <div>
+                        <select asp-for="BookStatus"
+                                class="form-control"
+                                asp-items="Html.GetEnumSelectList<BookStatus>()">
+                            <option>Seçiniz...</option>
+                        </select>
+                    </div>
+                    <span asp-validation-for="BookStatus" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label asp-for="Category" class="control-label"></label>
+
+                    @Html.DropDownListFor(m => m.CategoryId, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
+
+                    <span asp-validation-for="Category" class="text-danger"></span>
+
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Publisher" class="control-label"></label>
+
+                    @Html.DropDownListFor(m => m.PublisherId, (List<SelectListItem>)ViewBag.Publishers, new { @class = "form-control" })
+
+                    <span asp-validation-for="Category" class="text-danger"></span>
+
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Author.Firstname" class="control-label"></label>
+                    <input asp-for="Author.Firstname" class="form-control" />
+                    <span asp-validation-for="Author.Firstname" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Author.Lastname" class="control-label"></label>
+                    <input asp-for="Author.Lastname" class="form-control" />
+                    <span asp-validation-for="Author.Lastname" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Author.Nickname"></label>
+                    <input asp-for="Author.Nickname" type="text" class="form-control">
+                    <span asp-validation-for="Author.Nickname" class="text-danger"></span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Desciption" class="control-label"></label>
+                <textarea asp-for="Desciption" class="form-control"></textarea>
+                <span asp-validation-for="Desciption" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input asp-for="Image" type="file" class="form-control-file">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Oluştur" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

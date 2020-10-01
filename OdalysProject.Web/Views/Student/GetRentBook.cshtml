@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Kiralanan Kitaplar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RentBook>
+
+@using OdalysProject.Web.Models
+
+<br />
+<div class="container-fluid">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Öğrenci", "Index", "Student")
+        </li>
+        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            @ViewData["Title"]
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+
+                            <th>@Html.DisplayNameFor(model => model.Book.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Book.ISBN)</th>
+                            <th>@Html.DisplayNameFor(model => model.RentDate)</th>
+                            <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
+
+
+
+
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+
+                            <th>@Html.DisplayNameFor(model => model.Book.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Book.ISBN)</th>
+                            <th>@Html.DisplayNameFor(model => model.RentDate)</th>
+                            <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
+
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@item.Book.Name</td>
+                                <td>@item.Book.ISBN</td>
+                                <td>@item.RentDate</td>
+                                <td>@item.DeliveryDate</td>
+
+
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
