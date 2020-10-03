@@ -1,2 +1,2 @@
 # OdalyProject
-Günümüz Teknolojileri ile Temel CRUD işlemleri ve diğer seçenekler ile geliştirilmiştir.
+Günümüz Teknolojileri ve Temel CRUD aksiyonları kullanılarak geliştirilmiştir.
