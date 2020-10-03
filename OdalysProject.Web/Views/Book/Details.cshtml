@@ -1,0 +1,207 @@
+﻿@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Book
+
+@using OdalysProject.Web.Models
+
+<br />
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <img src="~/book/bookimage.png" alt="" style="width:300px" />
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="profile-head">
+                <h5>
+                    <strong>@Model.Name</strong>
+                </h5>
+                @if (Model.Author.FullName == null)
+                {
+                    <h6>Bilinmiyor</h6>
+                }
+                else
+                {
+                    <h6>@Model.Author.FullName</h6>
+                }
+                <p class="proile-rating"><strong class="text-success">Sıralama :</strong> <span>0/0</span></p>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Kitap Bilgileri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Yazar Bilgileri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="publisher-tab" data-toggle="tab" href="#publisher" role="tab" aria-controls="publisher" aria-selected="false">Yayınevi Bilgileri</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>@Html.DisplayNameFor(model => model.Name)</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Name</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.ISBN)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.ISBN</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Quantity)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Quantity</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.BookStatus)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.BookStatus</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Category)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Category.Name</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Author.Firstname)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Author.Firstname</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Author.Lastname)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Author.Lastname</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Author.FullName)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Author.FullName</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Author.Nickname)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Author.Nickname</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Author.DateOfBirth)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Author.DateOfBirth</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Author.DateOfDeath)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Author.DateOfDeath</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Author.About)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Author.About</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="publisher" role="tabpanel" aria-labelledby="publisher-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Publisher.Name)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Publisher.Name</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Publisher.About)
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Model.Publisher.About</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2020-10-02T10:32:05.884887Z"
+    }
+  },
+  "parameters": {
+    "resourceGroup": {
+      "Type": "resourceGroup",
+      "Value": "OdalysProjectWeb20201001224357ResourceGroup"
+    },
+    "subscriptionId": {
+      "Type": "subscription",
+      "Value": "a2f30e8c-1439-4716-97ca-005bc6794abb"
+    }
+  }
+}

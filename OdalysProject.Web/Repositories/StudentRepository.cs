@@ -20,6 +20,7 @@ namespace OdalysProject.Web.Repositories
 
         public async Task<Student> CreateAsync(Student entity)
         {
+            _applicationDbContext.Student.Include(x => x.StudenGender);
             await _applicationDbContext.Student.AddAsync(entity);
             await _applicationDbContext.SaveChangesAsync();
 

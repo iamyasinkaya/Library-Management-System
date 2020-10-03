@@ -377,6 +377,9 @@ namespace OdalysProject.Web.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("StudenGender")
+                        .HasColumnType("int");
+
                     b.Property<string>("StudentNumber")
                         .HasColumnType("nvarchar(max)");
 

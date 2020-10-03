@@ -19,8 +19,8 @@ namespace OdalysProject.Web.Validator
 
             RuleFor(x => x.ISBN)
                 .NotEmpty()
-                .WithMessage("Bu alan boş geçilemez!")
-                .Length(13, 13);
+                .WithMessage("Bu alan boş geçilemez!");
+                
 
             RuleFor(x => x.Quantity)
                 .NotEmpty()

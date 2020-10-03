@@ -4,7 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 using OdalysProject.Web.Data;
 using OdalysProject.Web.Interfaces;
 using OdalysProject.Web.Models;
@@ -15,12 +18,14 @@ namespace OdalysProject.Web.Controllers
     {
         private readonly IAuthorRepository _authorRepository;
         private readonly ApplicationDbContext _applicationDbContext;
+        private readonly ILogger _logger;
 
 
-        public AuthorController(IAuthorRepository authorRepository, ApplicationDbContext applicationDbContext = null)
+        public AuthorController(IAuthorRepository authorRepository, ApplicationDbContext applicationDbContext = null, ILogger<AuthorController> logger = null)
         {
             _authorRepository = authorRepository ?? throw new ArgumentNullException(nameof(authorRepository));
-            _applicationDbContext = applicationDbContext;
+            _applicationDbContext = applicationDbContext ?? throw new ArgumentNullException(nameof(applicationDbContext));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<IActionResult> Index()
@@ -28,43 +33,8 @@ namespace OdalysProject.Web.Controllers
             return View(await _authorRepository.GetAllAsync());
         }
 
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(Author author)
-        {
-            if (ModelState.IsValid)
-            {
-                await _authorRepository.CreateAsync(author);
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Delete(int? Id)
-        {
-            return View(await _authorRepository.GetByIdAsync(Id.Value));
-        }
-
-        [HttpPost]
-
-        public async Task<IActionResult> Delete(int Id)
-        {
-            if (ModelState.IsValid)
-            {
-                await _authorRepository.DeleteAsync(Id);
-
-
-            }
-
-            return RedirectToAction(nameof(Index));
-
-        }
+            
 
         [HttpPost]
         public IActionResult DownloadExcelDocument()

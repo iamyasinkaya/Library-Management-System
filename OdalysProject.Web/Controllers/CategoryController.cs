@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OdalysProject.Web.Interfaces;
 using OdalysProject.Web.Models;
@@ -23,12 +24,14 @@ namespace OdalysProject.Web.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Create(Category category)
         {
             if (ModelState.IsValid)
@@ -47,12 +50,14 @@ namespace OdalysProject.Web.Controllers
         }
 
         [HttpGet]
+
         public async Task<IActionResult> Delete(int? Id)
         {
             return View(await _categoryRepository.GetByIdAsync(Id.Value));
         }
 
         [HttpPost]
+
 
         public async Task<IActionResult> Delete(int Id)
         {
@@ -69,6 +74,7 @@ namespace OdalysProject.Web.Controllers
 
 
         [HttpGet]
+
         public async Task<IActionResult> Update(int Id)
         {
             return View(await _categoryRepository.GetByIdAsync(Id));

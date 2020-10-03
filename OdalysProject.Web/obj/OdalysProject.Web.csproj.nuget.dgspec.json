@@ -42,21 +42,17 @@
               "target": "Package",
               "version": "[0.95.3, )"
             },
-            "FluentValidation": {
-              "target": "Package",
-              "version": "[9.2.2, )"
-            },
             "FluentValidation.AspNetCore": {
-              "target": "Package",
-              "version": "[9.2.0, )"
-            },
-            "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
               "version": "[9.2.0, )"
             },
             "FormHelper": {
               "target": "Package",
               "version": "[3.2.3, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",

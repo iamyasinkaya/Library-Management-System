@@ -32,7 +32,6 @@
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.BookId)</th>
                             <th>@Html.DisplayNameFor(model => model.Name)</th>
                             <th>@Html.DisplayNameFor(model => model.ISBN)</th>
                             <th>@Html.DisplayNameFor(model => model.Quantity)</th>
@@ -47,7 +46,6 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.BookId)</th>
                             <th>@Html.DisplayNameFor(model => model.Name)</th>
                             <th>@Html.DisplayNameFor(model => model.ISBN)</th>
                             <th>@Html.DisplayNameFor(model => model.Quantity)</th>
@@ -62,7 +60,6 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.BookId</td>
                                 <td>@item.Name</td>
                                 <td>@item.ISBN</td>
                                 <td>@item.Quantity</td>

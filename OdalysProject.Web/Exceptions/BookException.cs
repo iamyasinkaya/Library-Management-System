@@ -15,6 +15,7 @@ namespace OdalysProject.Web.Exceptions
             if (book == null)
             {
                 var message = "Varlık boş olamaz...";
+                
             }
         }
         

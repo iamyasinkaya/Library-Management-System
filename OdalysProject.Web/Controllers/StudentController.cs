@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OdalysProject.Web.Interfaces;
 using OdalysProject.Web.Models;
@@ -30,12 +31,14 @@ namespace OdalysProject.Web.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Create(Student student)
         {
             if (ModelState.IsValid)

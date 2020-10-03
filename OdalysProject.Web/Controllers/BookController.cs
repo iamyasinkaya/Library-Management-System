@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -35,6 +36,7 @@ namespace OdalysProject.Web.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Create()
         {
             List<SelectListItem> categories = (from i in _applicationDbContext.Category.ToList()
@@ -60,19 +62,25 @@ namespace OdalysProject.Web.Controllers
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Create(Book book)
         {
-            
 
             if (ModelState.IsValid)
             {
                 await _bookRepository.CreateAsync(book);
+                _logger.LogInformation("Kullanıcı başarılı şekilde oluşturuldu.");
+            }
+            else
+            {
+                _logger.LogError("Kullanıcı oluşturulamadı.");
             }
 
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
+
         public async Task<IActionResult> Delete(int? Id)
         {
             return View(await _bookRepository.GetByIdAsync(Id.Value));
@@ -80,15 +88,19 @@ namespace OdalysProject.Web.Controllers
 
         [HttpPost]
 
+
         public async Task<IActionResult> Delete(int Id)
         {
             if (ModelState.IsValid)
             {
                 await _bookRepository.DeleteAsync(Id);
-
+                _logger.LogInformation("Kullanıcı başarıyla silindi.");
 
             }
-
+            else
+            {
+                _logger.LogError("Kullanıcı Silinemedi.");
+            }
             return RedirectToAction(nameof(Index));
 
         }
@@ -132,7 +144,13 @@ namespace OdalysProject.Web.Controllers
             }
         }
 
+
         
+        public async Task<IActionResult> Details(int Id)
+        {
+            return View(await _bookRepository.GetByIdAsync(Id));
+        }
+
 
     }
 }

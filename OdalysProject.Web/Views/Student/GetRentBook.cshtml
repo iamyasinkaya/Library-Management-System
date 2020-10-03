@@ -62,10 +62,21 @@
 
                                 <td>@item.Book.Name</td>
                                 <td>@item.Book.ISBN</td>
-                                <td>@item.RentDate</td>
-                                <td>@item.DeliveryDate</td>
+                                <td class="text-success"><strong>@item.RentDate</strong></td>
+                                @{
+                                    var date = new DateTime();
+
+                                    if (item.DeliveryDate == date)
+                                    {
+                                        <td class="text-danger"><strong>Teslim Edilmedi</strong></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-danger"><strong>@item.DeliveryDate</strong></td>
+                                    }
 
 
+                                }
 
                             </tr>
                         }

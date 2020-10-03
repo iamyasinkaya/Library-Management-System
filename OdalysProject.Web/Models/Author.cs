@@ -15,19 +15,19 @@ namespace OdalysProject.Web.Models
         [Display(Name ="Yazar Numarası")]
         public int AuthorId { get; set; }
 
-        [Display(Name = "Adı")]
+        [Display(Name = "Yazar Adı")]
         [DataType(DataType.Text)]
         public string Firstname { get; set; }
 
-        [Display(Name = "Soyadı")]
+        [Display(Name = "Yazar Soyadı")]
         [DataType(DataType.Text)]
         public string Lastname { get; set; }
 
-        [Display(Name = "Ünvan")]
+        [Display(Name = "Yazar Ünvanı")]
         [DataType(DataType.Text)]
         public string Nickname { get; set; }
 
-        [Display(Name = "Hakkında")]
+        [Display(Name = "Yazar Hakkında")]
         [DataType(DataType.MultilineText)]
         public string About { get; set; }
 
@@ -42,7 +42,7 @@ namespace OdalysProject.Web.Models
         [Display(Name ="Kitap Numarası")]
         public int BookForeignKey { get; set; }
 
-        [Display(Name = "Tam Adı")]
+        [Display(Name = "Yazar Tam Adı")]
         public string FullName { get; set; }
 
         [Display(Name = "Kitap")]

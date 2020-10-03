@@ -1,4 +1,5 @@
-﻿using OdalysProject.Web.Models.Base;
+﻿using OdalysProject.Web.Enums;
+using OdalysProject.Web.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -38,7 +39,9 @@ namespace OdalysProject.Web.Models
         [DataType(DataType.Text)]
         public string PhoneNumber { get; set; }
 
-        
+        [Display(Name ="Öğrenci Cinsiyeti")]
+        public StudentGender StudenGender { get; set; }
+
 
     }
 

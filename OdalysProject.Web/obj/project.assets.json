@@ -39,7 +39,7 @@
           "lib/netstandard2.0/ExcelNumberFormat.dll": {}
         }
       },
-      "FluentValidation/9.2.2": {
+      "FluentValidation/9.2.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/FluentValidation.dll": {}
@@ -128,6 +128,21 @@
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
         }
+      },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.5"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Microsoft.AspNetCore.Hosting.Abstractions/1.0.4": {
         "type": "package",
@@ -3450,14 +3465,14 @@
         "lib/netstandard2.0/ExcelNumberFormat.xml"
       ]
     },
-    "FluentValidation/9.2.2": {
-      "sha512": "Y1TQrSa82i/WWPpXriEkL7uyUyECw3Uvtq66dZ8VC3pwFa9VqnZmeZaJJpz8deKhJQNDgqwU3BSptKTnyjqzuA==",
+    "FluentValidation/9.2.0": {
+      "sha512": "LNUzNXWlBQavU/eB9pf4Tg8TTWgCw8E85OBA1GJv4xkdwuer9FuFLHTBjcYX+gGBkPFc2G+3utzEA4aMhUOL3w==",
       "type": "package",
-      "path": "fluentvalidation/9.2.2",
+      "path": "fluentvalidation/9.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fluentvalidation.9.2.2.nupkg.sha512",
+        "fluentvalidation.9.2.0.nupkg.sha512",
         "fluentvalidation.nuspec",
         "lib/net461/FluentValidation.dll",
         "lib/net461/FluentValidation.xml",
@@ -3555,6 +3570,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
         "microsoft.aspnetcore.cryptography.keyderivation.3.1.5.nupkg.sha512",
         "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.5": {
+      "sha512": "OY2PzG13rWRlHVWKfEzn8SbSgehSQTMltRZBl0vY0eKNi3Dp9MZhq3lHNVQNT69H6S/+g36VHWx1mpAjfoXqpg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.xml",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.5.nupkg.sha512",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Hosting.Abstractions/1.0.4": {
@@ -10310,10 +10340,9 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "ClosedXML >= 0.95.3",
-      "FluentValidation >= 9.2.2",
       "FluentValidation.AspNetCore >= 9.2.0",
-      "FluentValidation.DependencyInjectionExtensions >= 9.2.0",
       "FormHelper >= 3.2.3",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.5",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.5",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.5",
       "Microsoft.EntityFrameworkCore >= 3.1.5",
@@ -10366,21 +10395,17 @@
             "target": "Package",
             "version": "[0.95.3, )"
           },
-          "FluentValidation": {
-            "target": "Package",
-            "version": "[9.2.2, )"
-          },
           "FluentValidation.AspNetCore": {
-            "target": "Package",
-            "version": "[9.2.0, )"
-          },
-          "FluentValidation.DependencyInjectionExtensions": {
             "target": "Package",
             "version": "[9.2.0, )"
           },
           "FormHelper": {
             "target": "Package",
             "version": "[3.2.3, )"
+          },
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[3.1.5, )"
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",

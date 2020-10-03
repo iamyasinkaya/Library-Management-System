@@ -11,7 +11,7 @@
 
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item">
-            @Html.ActionLink("Anasayfa","Index","Home")
+            @Html.ActionLink("Anasayfa", "Index", "Home")
         </li>
         <li class="breadcrumb-item active">@ViewData["Title"]</li>
     </ol>
@@ -30,8 +30,7 @@
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
-                            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                            <th>Adı Soyadı</th>
                             <th>@Html.DisplayNameFor(model => model.StudentNumber)</th>
                             <th>@Html.DisplayNameFor(model => model.EmailAddress)</th>
                             <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
@@ -42,8 +41,8 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
-                            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                            <th>Adı Soyadı</th>
+
                             <th>@Html.DisplayNameFor(model => model.StudentNumber)</th>
                             <th>@Html.DisplayNameFor(model => model.EmailAddress)</th>
                             <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
@@ -58,17 +57,14 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
+                                <td>@item.FirstName @item.LastName</td>
                                 <td>@item.StudentNumber</td>
                                 <td>@item.EmailAddress</td>
                                 <td>@item.PhoneNumber</td>
 
                                 <td>
 
-                                    @Html.ActionLink("Kiralanan Kitaplar", "GetRentBook", "Student", new { Id = item.StudentId })
-                                    @Html.ActionLink("Sil", "Delete", "Student", new { Id = item.StudentId })
-                                    @Html.ActionLink("Güncelle", "Update", "Student", new { Id = item.StudentId })
+                                    @Html.ActionLink("K.Kitap", "GetRentBook", "Student", new { Id = item.StudentId }, new { @class = "btn btn-outline-primary" })
 
 
                                 </td>

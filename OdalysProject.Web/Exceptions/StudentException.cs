@@ -13,7 +13,7 @@ namespace OdalysProject.Web.Exceptions
     }
 
     [Serializable]
-    class InvalidStudentNameException : Exception
+    public class InvalidStudentNameException : Exception
     {
         public InvalidStudentNameException()
         {

@@ -1,4 +1,5 @@
-﻿using OdalysProject.Web.Models.Base;
+﻿using FluentValidation;
+using OdalysProject.Web.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,4 +20,6 @@ namespace OdalysProject.Web.Models
         [DataType(DataType.Text)]
         public string Name { get; set; }
     }
+
+   
 }

@@ -37,9 +37,7 @@
                             <th>@Html.DisplayNameFor(model => model.Name)</th>
                             <th>@Html.DisplayNameFor(model => model.ISBN)</th>
                             <th>@Html.DisplayNameFor(model => model.Quantity)</th>
-                            <th>@Html.DisplayNameFor(model => model.Category.Name)</th>
-                            <th>@Html.DisplayNameFor(model => model.Author.FullName)</th>
-                            <th>@Html.DisplayNameFor(model => model.Publisher.Name)</th>
+
                             <th>Aksiyonlar</th>
 
 
@@ -52,9 +50,7 @@
                             <th>@Html.DisplayNameFor(model => model.Name)</th>
                             <th>@Html.DisplayNameFor(model => model.ISBN)</th>
                             <th>@Html.DisplayNameFor(model => model.Quantity)</th>
-                            <th>@Html.DisplayNameFor(model => model.Category.Name)</th>
-                            <th>@Html.DisplayNameFor(model => model.Author.FullName)</th>
-                            <th>@Html.DisplayNameFor(model => model.Publisher.Name)</th>
+
                             <th>Aksiyonlar</th>
 
 
@@ -67,14 +63,14 @@
                                 <td>@item.Name</td>
                                 <td>@item.ISBN</td>
                                 <td>@item.Quantity</td>
-                                <td>@item.Category.Name</td>
-                                <td>@item.Author.FullName</td>
-                                <td>@item.Publisher.Name</td>
+
                                 <td>
 
 
-                                    @Html.ActionLink("Sil", "Delete", "Book", new { Id = item.BookId })
-                                    @Html.ActionLink("Güncelle", "Update", "Book", new { Id = item.BookId })
+                                    @Html.ActionLink("Detaylar", "Details", "Book", new { Id = item.BookId }, new { @class = "btn btn-outline-primary" })
+
+                                    @Html.ActionLink("Sil", "Delete", "Book", new { Id = item.BookId }, new { @class = "btn btn-outline-danger" })
+
 
 
                                 </td>
@@ -91,5 +87,6 @@
 
     </div>
 </div>
+
 
 

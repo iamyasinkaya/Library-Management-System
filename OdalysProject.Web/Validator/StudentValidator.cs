@@ -11,8 +11,8 @@ namespace OdalysProject.Web.Validator
     {
         public StudentValidator()
         {
-            RuleFor(x => x.FirstName).NotEmpty().WithMessage("Bu alan boş geçilemez!");
-            RuleFor(x => x.LastName).NotEmpty().WithMessage("Bu alan boş geçilemez!");
+            RuleFor(x => x.FirstName).NotEmpty().WithMessage("Bu alanı boş bırakmayınız!");
+            RuleFor(x => x.LastName).NotEmpty().WithMessage("Bu alanı boş bırakmayınız!");
             RuleFor(x => x.StudentNumber).NotEmpty()
                 .Length(6, 10)
                 .Custom((studentNumber, context) =>
@@ -26,6 +26,10 @@ namespace OdalysProject.Web.Validator
                         context.AddFailure("Öğrenci Numarası 'A', 'B', 'C','D' harfi ile başlamalıdır.");
                     }
                 });
+
+            RuleFor(x => x.EmailAddress).EmailAddress().NotNull().WithMessage("Bu alanı boş bırakmayınız!");
+
+            RuleFor(x => x.PhoneNumber).NotNull().WithMessage("Bu alanı boş bırakmayınız!");
         }
     }
 }

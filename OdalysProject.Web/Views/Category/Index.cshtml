@@ -48,13 +48,14 @@
                         {
                             <tr>
                                 <td>@item.Name</td>
-
+                                
+                                    
+                               
                                 <td>
 
 
                                     @Html.ActionLink("Kitaplar", "GetBooks", "Category", new { Id = item.CategoryId }, new { @class = "btn btn-outline-primary" })
                                     @Html.ActionLink("Güncelle", "Update", "Category", new { Id = item.CategoryId }, new { @class = "btn btn-outline-warning" })
-                                    @Html.ActionLink("Sil", "Delete", "Category", new { Id = item.CategoryId }, new { @class = "btn btn-outline-danger" })
 
 
                                 </td>

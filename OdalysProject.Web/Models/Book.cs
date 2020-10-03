@@ -34,7 +34,7 @@ namespace OdalysProject.Web.Models
         [Display(Name = "Miktar")]
         public int Quantity { get; set; }
 
-        [Display(Name = "Açıklama")]
+        [Display(Name = "Kitap Açıklaması")]
         [DataType(DataType.MultilineText)]
         public string Desciption { get; set; }
 

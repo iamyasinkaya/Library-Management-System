@@ -14,7 +14,7 @@
 
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item">
-            @Html.ActionLink("Anasayfa","Index","Home")
+            @Html.ActionLink("Anasayfa", "Index", "Home")
         </li>
         <li class="breadcrumb-item active">@ViewData["Title"]</li>
     </ol>
@@ -33,13 +33,14 @@
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            
+
                             <th>@Html.DisplayNameFor(model => model.Book.Name)</th>
                             <th>@Html.DisplayNameFor(model => model.StudentId)</th>
                             <th>@Html.DisplayNameFor(model => model.Student.FirstName)</th>
                             <th>@Html.DisplayNameFor(model => model.Student.LastName)</th>
                             <th>@Html.DisplayNameFor(model => model.RentDate)</th>
                             <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
+                            <th>Kalan Süre</th>
 
 
 
@@ -49,13 +50,14 @@
                     </thead>
                     <tfoot>
                         <tr>
-                           
+
                             <th>@Html.DisplayNameFor(model => model.Book.Name)</th>
                             <th>@Html.DisplayNameFor(model => model.StudentId)</th>
                             <th>@Html.DisplayNameFor(model => model.Student.FirstName)</th>
                             <th>@Html.DisplayNameFor(model => model.Student.LastName)</th>
                             <th>@Html.DisplayNameFor(model => model.RentDate)</th>
                             <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
+                            <th>Kalan Süre</th>
 
 
 
@@ -64,18 +66,43 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                           
-                            <td>@item.Book.Name</td>
-                            <td>@item.Student.StudentNumber</td>
-                            <td>@item.Student.FirstName</td>
-                            <td>@item.Student.LastName</td>
-                            <td class="text-success"><strong>@item.RentDate</strong></td>
-                            <td class="text-danger"><strong>@item.DeliveryDate</strong></td>
+                            <tr>
+
+                                <td>@item.Book.Name</td>
+                                <td>@item.Student.StudentNumber</td>
+                                <td>@item.Student.FirstName</td>
+                                <td>@item.Student.LastName</td>
+                                <td class="text-success"><strong>@item.RentDate</strong></td>
+                                @{
+                                    var date = new DateTime();
+
+                                    if (item.DeliveryDate == date)
+                                    {
+                                        <td  class="text-danger"><strong>Teslim Edilmedi</strong></td>
+                                        
+                                    }
+                                    else
+                                    {
+                                        <td class="text-danger"><strong>@item.DeliveryDate.Date</strong></td>
+                                    }
+
+
+                                }
+
+
+                                @if (item.DeliveryDate == date)
+                                {
+                                    <td><strong>@item.RentDate.AddDays(90)</strong></td>
+                                }
+                                else
+                                {
+                                    <td><strong>Bitti</strong></td>
+                                }
 
 
 
-                        </tr>
+
+                            </tr>
                         }
 
                     </tbody>

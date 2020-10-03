@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OdalysProject.Web.Data;
@@ -18,7 +19,7 @@ namespace OdalysProject.Web.Controllers
         public RentBookController(IRentBookRepository rentBookRepository, ApplicationDbContext applicationDbContext)
         {
             _rentBookRepository = rentBookRepository ?? throw new ArgumentNullException(nameof(rentBookRepository));
-            _applicationDbContext = applicationDbContext;
+            _applicationDbContext = applicationDbContext ?? throw new ArgumentNullException(nameof(applicationDbContext));
         }
 
         public async Task<IActionResult> Index()
@@ -27,6 +28,7 @@ namespace OdalysProject.Web.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Create()
         {
             List<SelectListItem> books = (from i in _applicationDbContext.Book.ToList()
@@ -52,6 +54,7 @@ namespace OdalysProject.Web.Controllers
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Create(RentBook rentBook)
         {
             if (ModelState.IsValid)

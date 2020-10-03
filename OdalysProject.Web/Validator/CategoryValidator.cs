@@ -11,7 +11,7 @@ namespace OdalysProject.Web.Validator
     {
         public CategoryValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Bu alan boş geçilemez!");
+            RuleFor(x => x.Name).NotNull().WithMessage("Bu alan boş geçilemez!");
         }
     }
 }

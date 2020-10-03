@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OdalysProject.Web.Exceptions
 {
-    public class PublisherException
+    public class PublisherException : Exception
     {
     }
 }

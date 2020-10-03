@@ -24,5 +24,6 @@ namespace OdalysProject.Web.Controllers
             return View(await _bookRepository.GetAllAsync());
         }
         
+       
     }
 }

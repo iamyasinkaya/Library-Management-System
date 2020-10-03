@@ -1,5 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html lang="tr">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,7 +20,7 @@
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" asp-action="Index" asp-controller="Home">Odalys Project</a>
+        @Html.ActionLink("Odalys Project", "Index", "Home", null, new { @class = "navbar-brand" })
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -26,18 +31,10 @@
                 </div>
             </div>
         </form>
+        <partial name="_LoginPartial" />
+
         <!-- Navbar-->
-        <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Ayarlar</a>
-                    <a class="dropdown-item" href="#">Aktif Üyeler</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Giriş Yap</a>
-                </div>
-            </li>
-        </ul>
+
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -45,100 +42,104 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
 
-
-
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Sayfalar
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
 
-                                    Kitaplar
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        @Html.ActionLink("Kitap Listesi", "Index", "Book", null, new { @class = "nav-link" })
-                                        @Html.ActionLink("Yeni Kitap Oluştur", "Create", "Book", null, new { @class = "nav-link" })
+                                        Kitaplar
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            @Html.ActionLink("Kitap Listesi", "Index", "Book", null, new { @class = "nav-link" })
+                                            @Html.ActionLink("Yeni Kitap Oluştur", "Create", "Book", null, new { @class = "nav-link" })
 
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    Kategoriler
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        @Html.ActionLink("Kategori Listesi", "Index", "Category", null, new { @class = "nav-link" })
-                                        @Html.ActionLink("Yeni Kategori Oluştur", "Create", "Category", null, new { @class = "nav-link" })
-                                       
-
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError1" aria-expanded="false" aria-controls="pagesCollapseError1">
-                                    Yazarlar
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError1" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                       
-
-                                        @Html.ActionLink("Yazar Listesi", "Index", "Author", null, new { @class = "nav-link" })
-                                        @Html.ActionLink("Yeni Yazar Oluştur", "Create", "Author", null, new { @class = "nav-link" })
-
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError2" aria-expanded="false" aria-controls="pagesCollapseError2">
-                                    Yayınevleri
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError2" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                       
-
-                                        @Html.ActionLink("Yayınevi Listesi", "Index", "Publisher", null, new { @class = "nav-link" })
-                                        @Html.ActionLink("Yeni Yayınevi Oluştur", "Create", "Publisher", null, new { @class = "nav-link" })
-
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError3" aria-expanded="false" aria-controls="pagesCollapseError3">
-                                    Öğrenciler
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError3" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-
-                                        @Html.ActionLink("Öğrenci Listesi", "Index", "Student", null, new { @class = "nav-link" })
-                                        @Html.ActionLink("Yeni Öğrenci Oluştur", "Create", "Student", null, new { @class = "nav-link" })
-
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError4" aria-expanded="false" aria-controls="pagesCollapseError4">
-                                    Kiralık Kitap
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError4" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-
-                                        @Html.ActionLink("Kiralanan Kitaplar", "Index", "RentBook", null, new { @class = "nav-link" })
-                                        @Html.ActionLink("Yeni Kiralama Oluştur", "Create", "RentBook", null, new { @class = "nav-link" })
-
-                                    </nav>
-                                </div>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Kategoriler
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            @Html.ActionLink("Kategori Listesi", "Index", "Category", null, new { @class = "nav-link" })
+                                            @Html.ActionLink("Yeni Kategori Oluştur", "Create", "Category", null, new { @class = "nav-link" })
 
 
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError1" aria-expanded="false" aria-controls="pagesCollapseError1">
+                                        Yazarlar
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError1" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
 
 
-                            </nav>
-                        </div>
-                     
+                                            @Html.ActionLink("Yazar Listesi", "Index", "Author", null, new { @class = "nav-link" })
+
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError2" aria-expanded="false" aria-controls="pagesCollapseError2">
+                                        Yayınevleri
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError2" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+
+
+                                            @Html.ActionLink("Yayınevi Listesi", "Index", "Publisher", null, new { @class = "nav-link" })
+                                            @Html.ActionLink("Yeni Yayınevi Oluştur", "Create", "Publisher", null, new { @class = "nav-link" })
+
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError3" aria-expanded="false" aria-controls="pagesCollapseError3">
+                                        Öğrenciler
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError3" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+
+                                            @Html.ActionLink("Öğrenci Listesi", "Index", "Student", null, new { @class = "nav-link" })
+                                            @Html.ActionLink("Yeni Öğrenci Oluştur", "Create", "Student", null, new { @class = "nav-link" })
+
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError4" aria-expanded="false" aria-controls="pagesCollapseError4">
+                                        Kiralık Kitap
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError4" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+
+                                            @Html.ActionLink("Kiralanan Kitaplar", "Index", "RentBook", null, new { @class = "nav-link" })
+                                            @Html.ActionLink("Yeni Kiralama Oluştur", "Create", "RentBook", null, new { @class = "nav-link" })
+
+                                        </nav>
+                                    </div>
+
+
+
+
+                                </nav>
+                            </div>
+                        }
+                        else
+                        {
+
+                        }
+
                     </div>
                 </div>
-                
+
             </nav>
         </div>
         <div id="layoutSidenav_content">
@@ -166,11 +167,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="~/dist/assets/demo/chart-area-demo.js"></script>
     <script src="~/dist/assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="~/dist/assets/demo/dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="~/dist/assets/demo/datatables-demo.js"></script>
 
-       
+
 
     @RenderSection("Scripts", required: false)
 
