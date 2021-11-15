@@ -1,2 +1,8 @@
-# OdalyProject
-Günümüz Teknolojileri ve Temel CRUD aksiyonları kullanılarak geliştirilmiştir.
+# Library Application
+
+Developed using today's technologies and basic CRUD actions.
+
+# Technologies
+- EntityFrameworkCore
+- FluentValidation
+- AutoMapper
